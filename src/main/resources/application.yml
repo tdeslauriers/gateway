@@ -1,0 +1,23 @@
+micronaut:
+  application:
+    name: gateway
+  security:
+    authenication: bearer
+    token:
+      jwt:
+        signatures:
+          secret:
+            generator:
+              secret: ${GATEWAY_STAGE_JWT_SIG_GEN}
+---
+datasources:
+  default:
+    url: jdbc:mysql://${GATEWAY_TESTDB_JAVA_IP}/${GATEWAY_TESTDB_JAVA_DBNAME}?serverTimezone=UTC
+    username: ${GATEWAY_TESTDB_JAVA_USER}
+    password: ${GATEWAY_TESTDB_JAVA_PASSWORD}
+    sql-dialect: 'MYSQL'
+---
+flyway:
+  datasources:
+    default:
+      locations: classpath:databasemigrations
