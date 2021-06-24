@@ -18,7 +18,7 @@ CREATE TABLE user (
 
 CREATE TABLE role (
     id INT NOT NULL AUTO_INCREMENT,
-    username VARCHAR(255),
+    role VARCHAR(255),
     PRIMARY KEY (id)
 );
 

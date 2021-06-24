@@ -15,15 +15,15 @@ import java.util.Optional;
 public interface UserRepository extends CrudRepository<User, Long> {
 
     @Join(value = "userRoles", type = Join.Type.LEFT_FETCH)
-    @Join(value = "role", type = Join.Type.LEFT_FETCH)
+    @Join(value = "userRoles.role", type = Join.Type.LEFT_FETCH)
     List<User> findAll();
 
     @Join(value = "userRoles", type = Join.Type.LEFT_FETCH)
-    @Join(value = "role", type = Join.Type.LEFT_FETCH)
+    @Join(value = "userRoles.role", type = Join.Type.LEFT_FETCH)
     Optional<User> findById(Long id);
 
     @Join(value = "userRoles", type = Join.Type.LEFT_FETCH)
-    @Join(value = "role", type = Join.Type.LEFT_FETCH)
+    @Join(value = "userRoles.role", type = Join.Type.LEFT_FETCH)
     Optional<User> findByUsername(String username);
 
 }
