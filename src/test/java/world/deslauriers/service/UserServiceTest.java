@@ -1,22 +1,21 @@
-package world.deslauriers.repository;
+package world.deslauriers.service;
 
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import javax.inject.Inject;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 @MicronautTest
-public class UserDaoTest {
+public class UserServiceTest {
 
     @Inject
-    private final UserRepository userRepository;
+    private final UserService userService;
 
-
-    public UserDaoTest(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserServiceTest(UserService userService) {
+        this.userService = userService;
     }
 
     // pre populated in test db
@@ -31,14 +30,12 @@ public class UserDaoTest {
     public static String TEST_USER_2_EMAIL = "luke.skywalker@rebels.com";
 
     @Test
-    void testUserCRUD(){
+    void testUserServiceCrud(){
 
-        var vader = userRepository.findByUsername(TEST_USER_1_EMAIL);
+        var vader = userService.findByUserName(TEST_USER_1_EMAIL);
         assertTrue(vader.isPresent());
-        assertEquals(TEST_USER_1_FIRSTNAME, vader.get().getFirstname());
-        assertEquals(TEST_USER_1_LASTNAME, vader.get().getLastname());
-        assertEquals(2, vader.get().getUserRoles().size());
-        vader.get().getUserRoles().forEach(userRole -> System.out.println(userRole.getRole().getRole()));
 
+        var luke = userService.findByUserName(TEST_USER_2_EMAIL);
+        assertTrue(luke.isEmpty());
     }
 }
