@@ -8,14 +8,12 @@ import io.reactivex.Flowable;
 import io.reactivex.Scheduler;
 import io.reactivex.schedulers.Schedulers;
 import org.reactivestreams.Publisher;
-import world.deslauriers.Application;
 import world.deslauriers.model.User;
 import world.deslauriers.service.UserService;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
-import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -54,7 +52,7 @@ public class DelegatingAuthenticationProviderImpl implements AuthenticationProvi
                 emitter.onNext(createSuccessfulAuthenticationResponse(authenticationRequest, user.get()));
             }
             emitter.onComplete();
-        }, BackpressureStrategy.ERROR); //.subscriberOn
+        }, BackpressureStrategy.ERROR); //.subscribeOn(scheduler)??
     }
 
 
