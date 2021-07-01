@@ -33,10 +33,13 @@ dependencies {
     implementation("io.micronaut:micronaut-http-client")
     runtimeOnly("ch.qos.logback:logback-classic")
 
+    //security
+    implementation("io.micronaut.security:micronaut-security-jwt")
+    compileOnly("io.micronaut.security:micronaut-security-annotations")
+
     // crypto
     implementation("org.springframework.security:spring-security-crypto:5.5.1")
-    // spring bcrypt source code impl uses apache commons LogFactory.
-    implementation 'commons-logging:commons-logging:1.2'
+    implementation("commons-logging:commons-logging:1.2") // spring bcrypt source code impl uses apache commons LogFactory.
 
     // database
     implementation("io.micronaut.data:micronaut-data-jdbc")
