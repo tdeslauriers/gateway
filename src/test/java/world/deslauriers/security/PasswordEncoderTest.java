@@ -2,6 +2,7 @@ package world.deslauriers.security;
 
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
+import world.deslauriers.service.UserService;
 
 import javax.inject.Inject;
 
@@ -14,8 +15,12 @@ public class PasswordEncoderTest {
     @Inject
     private final PasswordEncoder passwordEncoder;
 
-    public PasswordEncoderTest(PasswordEncoder passwordEncoder) {
+    @Inject
+    private final UserService userService;
+
+    public PasswordEncoderTest(PasswordEncoder passwordEncoder, UserService userService) {
         this.passwordEncoder = passwordEncoder;
+        this.userService = userService;
     }
 
     public static final String TEST_PASSWORD_1 = "admin"; // lol

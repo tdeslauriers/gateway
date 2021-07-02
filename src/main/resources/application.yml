@@ -2,7 +2,7 @@ micronaut:
   application:
     name: gateway
   security:
-    authenication: bearer
+    authentication: bearer
     token:
       jwt:
         signatures:
