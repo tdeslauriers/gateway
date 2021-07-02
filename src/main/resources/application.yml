@@ -10,6 +10,15 @@ micronaut:
             generator:
               secret: ${GATEWAY_STAGE_JWT_SIG_GEN}
 ---
+# refresh-token
+micronaut:
+  security:
+    token:
+      jwt:
+        generator:
+          refresh-token:
+            secret: ${GATEWAY_STAGE_JWT_SIG_GEN}
+---
 datasources:
   default:
     url: jdbc:mysql://${GATEWAY_TESTDB_JAVA_IP}/${GATEWAY_TESTDB_JAVA_DBNAME}?serverTimezone=UTC
