@@ -1,7 +1,7 @@
 plugins {
     id("com.github.johnrengelman.shadow") version "7.0.0"
-    id("io.micronaut.application") version "1.5.0"
-    id("io.freefair.lombok") version "5.3.0"
+    id("io.micronaut.application") version "$micronautPluginVersion"
+    id("io.freefair.lombok") version "$lombokPluginVersion"
 }
 
 version = "0.1"
@@ -21,8 +21,8 @@ micronaut {
 }
 
 dependencies {
-    compileOnly("org.projectlombok:lombok:1.18.12")
-    annotationProcessor("org.projectlombok:lombok:1.18.12")
+    compileOnly("org.projectlombok:lombok:$lombokVersion")
+    annotationProcessor("org.projectlombok:lombok:$lombokVersion")
 
     //security
     implementation("io.micronaut.security:micronaut-security-annotations")
@@ -51,6 +51,7 @@ dependencies {
 application {
     mainClass.set("world.deslauriers.Application")
 }
+
 java {
     sourceCompatibility = JavaVersion.toVersion("14")
     targetCompatibility = JavaVersion.toVersion("14")

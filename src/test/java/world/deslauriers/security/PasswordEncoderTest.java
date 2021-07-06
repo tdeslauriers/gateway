@@ -38,5 +38,6 @@ public class PasswordEncoderTest {
         assertTrue(theyMatch);
 
         assertTrue(passwordEncoder.matches(TEST_PASSWORD_3, passwordEncoder.encode(TEST_PASSWORD_3)));
+
     }
 }

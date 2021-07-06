@@ -24,7 +24,7 @@ public class AuthProviderTest {
     RxHttpClient client;
 
     private static String VALID_USERNAME = "darth.vader@empire.com";
-    private static String VALID_PASSWORD = "NowThisIsPod-Racing!!!";
+    private static String VALID_PASSWORD = "Now-This-Is-Pod-Racing!!!";
     private static String USERROLE_1 = "sith";
     private static String USERROLE_2 = "starpilot";
 
@@ -64,7 +64,7 @@ public class AuthProviderTest {
     @Test
     void testLoginFailure(){
 
-        //bad creds
+        //bad creds-
         var request = HttpRequest
                 .create(HttpMethod.POST, "/login")
                 .accept(MediaType.APPLICATION_JSON_TYPE)
