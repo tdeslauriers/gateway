@@ -1,6 +1,11 @@
 micronaut:
   application:
     name: gateway
+  http:
+    services:
+      gallery:
+        urls:
+          - "http://localhost:8081"
   security:
     authentication: bearer
     token:
@@ -9,15 +14,9 @@ micronaut:
           secret:
             generator:
               secret: ${GATEWAY_STAGE_JWT_SIG_GEN}
----
-# refresh-token
-micronaut:
-  security:
-    token:
-      jwt:
         generator:
-          refresh-token:
-            secret: ${GATEWAY_STAGE_JWT_SIG_GEN}
+            refresh-token:
+              secret: ${GATEWAY_STAGE_JWT_SIG_GEN} # same for now, change when implement
 ---
 datasources:
   default:
