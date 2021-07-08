@@ -20,15 +20,15 @@ public class UserDaoTest {
     }
 
     // pre populated in test db
-    public static String TEST_USER_1_FIRSTNAME = "Darth";
-    public static String TEST_USER_1_LASTNAME = "Vader";
-    public static String TEST_USER_1_EMAIL = "darth.vader@empire.com";
-    public static String TEST_USER_1_ROLE_1 = "sith";
-    public static String TEST_USER_1_ROLE_2 = "starpilot";
+    public static final String TEST_USER_1_FIRSTNAME = "Darth";
+    public static final String TEST_USER_1_LASTNAME = "Vader";
+    public static final String TEST_USER_1_EMAIL = "darth.vader@empire.com";
+    public static final String TEST_USER_1_ROLE_1 = "sith";
+    public static final String TEST_USER_1_ROLE_2 = "starpilot";
 
-    public static String TEST_USER_2_FIRSTNAME = "Luke";
-    public static String TEST_USER_2_LASTNAME = "Skywalker";
-    public static String TEST_USER_2_EMAIL = "luke.skywalker@rebels.com";
+    public static final String TEST_USER_2_FIRSTNAME = "Luke";
+    public static final String TEST_USER_2_LASTNAME = "Skywalker";
+    public static final String TEST_USER_2_EMAIL = "luke.skywalker@rebels.com";
 
     @Test
     void testUserCRUD(){

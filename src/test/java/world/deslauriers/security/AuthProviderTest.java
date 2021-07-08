@@ -23,10 +23,10 @@ public class AuthProviderTest {
     @Client("/")
     RxHttpClient client;
 
-    private static String VALID_USERNAME = "darth.vader@empire.com";
-    private static String VALID_PASSWORD = "Now-This-Is-Pod-Racing!!!";
-    private static String USERROLE_1 = "sith";
-    private static String USERROLE_2 = "starpilot";
+    private static final String VALID_USERNAME = "darth.vader@empire.com";
+    private static final String VALID_PASSWORD = "Now-This-Is-Pod-Racing!!!";
+    private static final String USERROLE_1 = "sith";
+    private static final String USERROLE_2 = "starpilot";
 
     @Test
     void testLoginSuccess() throws ParseException {
