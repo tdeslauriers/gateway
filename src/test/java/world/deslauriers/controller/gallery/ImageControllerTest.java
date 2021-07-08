@@ -26,6 +26,7 @@ public class ImageControllerTest {
     private static final String VALID_PASSWORD = "Now-This-Is-Pod-Racing!!!";
     private static final String PIC_FILE_NAME = "522d748b-de61-11eb-b22e-dc41a9582465";
     private static final String IMAGE_CLIENT_URI = "http://localhost:8081/images";
+
     @Test
     void testImageClientAuthenticated(){
 
