@@ -46,7 +46,7 @@ public class ImageControllerTest {
                 .retrieve(HttpRequest.GET(IMAGE_CLIENT_URI + "/2021")
                     .header(
                             "Authorization", "Bearer " + bearer.getAccessToken()),
-                        Argument.of(List.class, Image.class));
+                            Argument.of(List.class, Image.class));
         assertNotNull(images);
         assertEquals(PIC_FILE_NAME, images.get(0).getFilename());
         assertEquals(2021, images.get(0).getDate().getYear());
@@ -77,7 +77,9 @@ public class ImageControllerTest {
                     client
                     .toBlocking()
                     .retrieve(HttpRequest.GET(IMAGE_CLIENT_URI + "/2021")
-                            .header("Authorization", "Bearer " + badToken), Image.class);
+                        .header(
+                                "Authorization", "Bearer " + badToken),
+                                Argument.of(List.class, Image.class));
                 }
         );
     }
