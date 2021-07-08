@@ -1,5 +1,6 @@
 package world.deslauriers.controller.gallery;
 
+import io.micronaut.core.type.Argument;
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.client.RxHttpClient;
 import io.micronaut.http.client.annotation.Client;
@@ -11,6 +12,8 @@ import org.junit.jupiter.api.Test;
 import world.deslauriers.model.gallery.Image;
 
 import javax.inject.Inject;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -38,14 +41,16 @@ public class ImageControllerTest {
         assertEquals(VALID_USERNAME, bearer.getUsername());
         assertTrue(bearer.getRoles().contains("sith"));
 
-        var image = client
+        List<Image> images = client
                 .toBlocking()
                 .retrieve(HttpRequest.GET(IMAGE_CLIENT_URI + "/2021")
-                    .header("Authorization", "Bearer " + bearer.getAccessToken()), Image.class);
-        assertNotNull(image);
-        assertEquals(PIC_FILE_NAME, image.getFilename());
-        assertEquals(2021, image.getDate().getYear());
-        assertTrue(image.getPublished());
+                    .header(
+                            "Authorization", "Bearer " + bearer.getAccessToken()),
+                        Argument.of(List.class, Image.class));
+        assertNotNull(images);
+        assertEquals(PIC_FILE_NAME, images.get(0).getFilename());
+        assertEquals(2021, images.get(0).getDate().getYear());
+        assertTrue(images.get(0).getPublished());
     }
 
     @Test
