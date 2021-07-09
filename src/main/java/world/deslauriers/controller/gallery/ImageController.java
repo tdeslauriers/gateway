@@ -22,7 +22,7 @@ public class ImageController {
 
     @Secured(SecurityRule.IS_AUTHENTICATED)
     @Produces(MediaType.APPLICATION_JSON)
-    @Get("/album")
+    @Get("/{album}")
     public Flowable<Image> getByAlbum(
             @Header("Authorization") String authorization,
             String album){

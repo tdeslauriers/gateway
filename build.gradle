@@ -39,6 +39,8 @@ dependencies {
     // crypto
     implementation("org.springframework.security:spring-security-crypto:5.5.1")
     implementation("commons-logging:commons-logging:1.2") // spring bcrypt source code impl uses apache commons LogFactory.
+    // ssl netty issue: does not like self-signed out of the box
+    implementation("org.bouncycastle:bcpkix-jdk15on:1.65")
 
     // database
     implementation("io.micronaut.data:micronaut-data-jdbc")

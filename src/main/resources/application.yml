@@ -5,7 +5,7 @@ micronaut:
     services:
       gallery:
         urls:
-          - "http://localhost:8081"
+          - "https://localhost:8444"
   security:
     authentication: bearer
     token:
@@ -17,6 +17,9 @@ micronaut:
         generator:
             refresh-token:
               secret: ${GATEWAY_STAGE_JWT_SIG_GEN} # same for now, change when implement
+  ssl:
+    enabled: true
+    buildSelfSigned: true
 ---
 datasources:
   default:

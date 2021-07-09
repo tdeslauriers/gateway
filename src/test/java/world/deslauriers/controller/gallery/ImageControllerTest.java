@@ -28,7 +28,29 @@ public class ImageControllerTest {
     private static final String VALID_USERNAME = "darth.vader@empire.com";
     private static final String VALID_PASSWORD = "Now-This-Is-Pod-Racing!!!";
     private static final String PIC_FILE_NAME = "522d748b-de61-11eb-b22e-dc41a9582465";
-    private static final String IMAGE_CLIENT_URI = "http://localhost:8081/images";
+    private static final String IMAGE_CLIENT_URI = "https://localhost:8444/images";
+
+    @Test
+    void testingClientForwarding(){
+        var creds = new UsernamePasswordCredentials(VALID_USERNAME, VALID_PASSWORD);
+        var request = HttpRequest.POST("/login", creds);
+
+        var bearer = client.toBlocking().retrieve(request, BearerAccessRefreshToken.class);
+        assertNotNull(bearer);
+        assertEquals(VALID_USERNAME, bearer.getUsername());
+        assertTrue(bearer.getRoles().contains("sith"));
+
+        List<Image> images = client
+                .toBlocking()
+                .retrieve(HttpRequest.GET("/gallery/images/2021")
+                                .header(
+                                        "Authorization", "Bearer " + bearer.getAccessToken()),
+                        Argument.of(List.class, Image.class));
+        assertNotNull(images);
+        assertEquals(PIC_FILE_NAME, images.get(0).getFilename());
+        assertEquals(2021, images.get(0).getDate().getYear());
+        assertTrue(images.get(0).getPublished());
+    }
 
     @Test
     void testImageClientAuthenticated(){
